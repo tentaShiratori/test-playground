@@ -1,46 +1,52 @@
 import { fc, it } from "@fast-check/jest";
 import {
-	act,
-	cleanup,
-	fireEvent,
+	RenderOptions,
+	RenderResult,
 	render,
-	screen,
+	within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { ReactNode } from "react";
 import { Form } from "./Sample4";
 
 it.prop([fc.gen(), fc.integer({ min: 1, max: 2 ** 3 - 1 })])(
 	"1つでもエラーがあればエラーが表示される",
 	async (gen, comb) => {
 		let c = comb;
-		cleanup();
-		render(<Form />);
+		const result = renderFC(<Form />);
 		const password = gen(properString, 8, 20);
-		await [() => inputName(gen), () => inputInvalidName()][c % 2]();
-		c = c >> 1;
-		await [() => inputPassword(gen, password), () => inputInvalidPassword()][
-			c % 2
-		]();
+		await [() => inputName(result, gen), () => inputInvalidName()][c % 2]();
 		c = c >> 1;
 		await [
-			() => inputPasswordConfirm(gen, password),
+			() => inputPassword(result, gen, password),
+			() => inputInvalidPassword(),
+		][c % 2]();
+		c = c >> 1;
+		await [
+			() => inputPasswordConfirm(result, gen, password),
 			() => inputInvalidPasswordConfirm(),
 		][c % 2]();
-		await clickButton();
-		expect(screen.getByText("エラーがあります")).toBeInTheDocument();
+		await clickButtonA(result);
+		expect(result.getByText("エラーがあります")).toBeInTheDocument();
 	},
 );
 
 it.prop([fc.gen()])("すべてにエラーがないならエラーはない", async (gen) => {
-	cleanup();
-	render(<Form />);
+	const result = renderFC(<Form />);
 	const password = gen(properString, 8, 20);
-	await inputName(gen);
-	await inputPassword(gen, password);
-	await inputPasswordConfirm(gen, password);
-	await clickButton();
-	expect(screen.getByTestId("error")).toBeEmptyDOMElement();
+	await inputName(result, gen);
+	await inputPassword(result, gen, password);
+	await inputPasswordConfirm(result, gen, password);
+	await clickButtonA(result);
+	expect(within(result.container).getByTestId("error")).toBeEmptyDOMElement();
 });
+
+const renderFC = (ui: ReactNode, options: RenderOptions = {}) => {
+	return render(ui, {
+		container: document.body.appendChild(document.createElement("div")),
+		...options,
+	});
+};
 
 const char = (charCodeFrom: number, charCodeTo: number) =>
 	fc.integer({ min: charCodeFrom, max: charCodeTo }).map(String.fromCharCode);
@@ -63,24 +69,31 @@ const properString = (min: number, max: number) => {
 		);
 	});
 };
-
-async function inputName(gen: fc.GeneratorValue) {
+async function inputName(result: RenderResult, gen: fc.GeneratorValue) {
 	await userEvent.type(
-		screen.getByRole("textbox", { name: "Name" }),
+		result.getByRole("textbox", { name: "Name" }),
 		gen(filteredStrings, 1, 100, /^[a-zA-Z\d]/),
 	);
 }
 
-async function inputPassword(gen: fc.GeneratorValue, password?: string) {
+async function inputPassword(
+	result: RenderResult,
+	gen: fc.GeneratorValue,
+	password?: string,
+) {
 	await userEvent.type(
-		screen.getByLabelText("Password"),
+		result.getByLabelText("Password"),
 		password ?? gen(properString, 8, 20),
 	);
 }
 
-async function inputPasswordConfirm(gen: fc.GeneratorValue, password?: string) {
+async function inputPasswordConfirm(
+	result: RenderResult,
+	gen: fc.GeneratorValue,
+	password?: string,
+) {
 	await userEvent.type(
-		screen.getByLabelText("Password Confirmation"),
+		result.getByLabelText("Password Confirmation"),
 		password ?? gen(properString, 8, 20),
 	);
 }
@@ -97,6 +110,6 @@ async function inputInvalidPasswordConfirm() {
 	// 何も入力しない
 }
 
-async function clickButton() {
-	await userEvent.click(screen.getByRole("button"));
+async function clickButtonA(result: RenderResult) {
+	await userEvent.click(result.getByRole("button"));
 }
