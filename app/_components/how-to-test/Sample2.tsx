@@ -1,6 +1,6 @@
 import { debounce } from "lodash-es";
 import { FC, useEffect, useMemo, useState } from "react";
-import { callAPI } from "../../lib/api";
+import { callAPI } from "../../../lib/api";
 export const Sample: FC = () => {
 	const [search, setSearch] = useState("");
 	const [todos, setTodos] = useState<{ title: string }[]>([]);

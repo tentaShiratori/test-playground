@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "check": "biome check --apply ."
+    "check": "biome check --apply .",
+    "pathpida":"pathpida --enableStatic"
   },
   "dependencies": {
     "@biomejs/biome": "^1.5.3",

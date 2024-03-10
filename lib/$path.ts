@@ -18,3 +18,13 @@ export const pagesPath = {
 };
 
 export type PagesPath = typeof pagesPath;
+
+export const staticPath = {
+	next_svg: "/next.svg",
+	test_video: {
+		video_mp4: "/test-video/video.mp4",
+	},
+	vercel_svg: "/vercel.svg",
+} as const;
+
+export type StaticPath = typeof staticPath;
