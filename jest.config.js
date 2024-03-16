@@ -1,8 +1,8 @@
 const nextJest = require("next/jest.js");
 
 const createJestConfig = nextJest({
-	// Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-	dir: "./",
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: "./",
 });
 
 // Add any custom config to be passed to Jest
@@ -10,20 +10,20 @@ const createJestConfig = nextJest({
  * @type {import("jest").Config}
  */
 const config = {
-	moduleNameMapper: {
-		"^lodash-es$": "lodash",
-	},
-	coverageProvider: "v8",
-	testEnvironment: "jsdom",
-	// Add more setup options before each test is run
-	setupFilesAfterEnv: [
-		"<rootDir>/jest.polyfills.js",
-		"<rootDir>/jest.setup.ts",
-	],
-	testEnvironmentOptions: {
-		// 参考: https://stackoverflow.com/questions/77399773/cannot-find-module-msw-node-from
-		customExportConditions: [""],
-	},
+  moduleNameMapper: {
+    "^lodash-es$": "lodash",
+  },
+  coverageProvider: "v8",
+  testEnvironment: "jsdom",
+  // Add more setup options before each test is run
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.polyfills.js",
+    "<rootDir>/jest.setup.ts",
+  ],
+  testEnvironmentOptions: {
+    // 参考: https://stackoverflow.com/questions/77399773/cannot-find-module-msw-node-from
+    customExportConditions: [""],
+  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

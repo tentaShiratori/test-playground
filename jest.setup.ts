@@ -2,12 +2,12 @@ import "@testing-library/jest-dom";
 import { server } from "./test/msw";
 
 beforeAll(() => {
-	server.listen();
+  server.listen();
 });
 afterEach(() => {
-	server.resetHandlers();
-	jest.useRealTimers();
+  server.resetHandlers();
+  jest.useRealTimers();
 });
 afterAll(() => {
-	server.close();
+  server.close();
 });
