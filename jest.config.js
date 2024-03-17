@@ -15,6 +15,7 @@ const config = {
   },
   coverageProvider: "v8",
   testEnvironment: "jsdom",
+  setupFiles: ["jest-webgl-canvas-mock"],
   // Add more setup options before each test is run
   setupFilesAfterEnv: [
     "<rootDir>/jest.polyfills.js",

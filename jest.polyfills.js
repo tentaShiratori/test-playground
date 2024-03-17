@@ -77,3 +77,5 @@ Object.defineProperties(HTMLMediaElement.prototype, {
     },
   },
 });
+
+window.PointerEvent = class PointerEvent extends MouseEvent {};
