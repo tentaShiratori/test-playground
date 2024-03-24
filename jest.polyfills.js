@@ -19,12 +19,12 @@ import fetch, {
   Response,
 } from "node-fetch-commonjs";
 
-Object.defineProperties(globalThis, {
+Object.defineProperties(window, {
   TextDecoder: { value: TextDecoder },
   TextEncoder: { value: TextEncoder },
 });
 
-Object.defineProperties(globalThis, {
+Object.defineProperties(window, {
   fetch: { value: fetch, writable: true },
   Blob: { value: Blob },
   File: { value: File },
@@ -77,5 +77,3 @@ Object.defineProperties(HTMLMediaElement.prototype, {
     },
   },
 });
-
-window.PointerEvent = class PointerEvent extends MouseEvent {};

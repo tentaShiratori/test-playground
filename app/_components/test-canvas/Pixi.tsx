@@ -1,4 +1,4 @@
-import { Application, Assets, Sprite } from "pixi.js";
+import { Application, Assets, Sprite, Graphics } from "pixi.js";
 import { FC, useEffect, useRef } from "react";
 
 export const Pixi: FC<{ onClick: () => void }> = ({ onClick }) => {
@@ -7,33 +7,28 @@ export const Pixi: FC<{ onClick: () => void }> = ({ onClick }) => {
     (async () => {
       const app = new Application({ width: 256, height: 256 });
       app.view.id = "pixi";
-      ref.current?.appendChild(app.view);
-      const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
-      const bunny = new Sprite(texture);
-      bunny.eventMode = "static";
-      bunny.cursor = "pointer";
+      app.view.dataset.testid = "pixi";
+      // const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
+      // const bunny = new Sprite(texture);
+      const graphics = new Graphics();
+      graphics.beginFill(0xde3249);
+      graphics.drawRect(0, 0, 100, 100);
+      graphics.endFill();
 
-      bunny.on("pointerdown", onClick);
+      graphics.eventMode = "static";
+      graphics.cursor = "pointer";
 
-      app.stage.addChild(bunny);
+      graphics.on("pointerdown", onClick);
+
+      app.stage.addChild(graphics);
       // Center the sprite's anchor point
-      bunny.anchor.set(0.5);
+      // bunny.anchor.set(0.5);
 
       // Move the sprite to the center of the screen
-      bunny.x = app.screen.width / 2;
-      bunny.y = app.screen.height / 2;
-      bunny.scale.set(3);
-
-      for (let i = 0; i < 1000; i += 10) {
-        for (let j = 0; j < 1000; j += 10) {
-          document.querySelector("#pixi")?.dispatchEvent(
-            new MouseEvent("pointerdown", {
-              clientX: i,
-              clientY: j,
-            })
-          );
-        }
-      }
+      graphics.x = app.screen.width / 4;
+      graphics.y = app.screen.height / 4;
+      graphics.scale.set(3);
+      ref.current?.appendChild(app.view);
     })();
   }, [onClick]);
   return <div ref={ref} />;

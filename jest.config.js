@@ -25,6 +25,7 @@ const config = {
     // 参考: https://stackoverflow.com/questions/77399773/cannot-find-module-msw-node-from
     customExportConditions: [""],
   },
+  testPathIgnorePatterns: ["<rootDir>/e2e/"],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

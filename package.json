@@ -7,14 +7,18 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "test:storybook": "test-storybook",
     "check": "biome check --apply .",
-    "pathpida": "pathpida --enableStatic"
+    "pathpida": "pathpida --enableStatic",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@biomejs/biome": "^1.5.3",
     "@fast-check/jest": "^1.8.0",
     "@hookform/resolvers": "^3.3.4",
     "@pixi/node": "^7.3.0",
+    "@storybook/test-runner": "^0.17.0",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -40,12 +44,22 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "1.2.22",
     "@playwright/test": "^1.42.1",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-interactions": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/addon-onboarding": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/nextjs": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/test": "^8.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
+    "storybook": "^8.0.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
