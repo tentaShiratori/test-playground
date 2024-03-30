@@ -41,7 +41,7 @@ const sleep = (ms: number) =>
     setTimeout(resolve, ms);
   });
 
-export default async function dragPointer(
+export default async function dragTouch(
   element: HTMLElement,
   {
     to: inTo,
@@ -76,6 +76,7 @@ export default async function dragPointer(
     clientY: from.y,
   };
 
+  let pointerId: number;
   Object.defineProperties(element, {
     hasPointerCapture: {
       value: jest.fn().mockReturnValue(true),
@@ -87,15 +88,13 @@ export default async function dragPointer(
       value: jest.fn(),
     },
   });
-  fireEvent.pointerEnter(element, current);
-  fireEvent.pointerOver(element, current);
-  fireEvent.pointerMove(element, current);
-  fireEvent.pointerDown(element, current);
+  fireEvent.touchMove(element, current);
+  fireEvent.touchStart(element, current);
   for (let i = 0; i < steps; i++) {
     current.clientX += step.x;
     current.clientY += step.y;
     await sleep(duration / steps);
-    fireEvent.pointerMove(element, current);
+    fireEvent.touchMove(element, current);
   }
-  fireEvent.pointerUp(element, current);
+  fireEvent.touchEnd(element, current);
 }
