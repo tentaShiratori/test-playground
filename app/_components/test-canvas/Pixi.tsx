@@ -5,7 +5,7 @@ export const Pixi: FC<{ onClick: () => void }> = ({ onClick }) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     (async () => {
-      const app = new Application({ width: 256, height: 256 });
+      const app = new Application({ width: 200, height: 200 });
       app.view.id = "pixi";
       app.view.dataset.testid = "pixi";
       // const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
@@ -27,7 +27,6 @@ export const Pixi: FC<{ onClick: () => void }> = ({ onClick }) => {
       // Move the sprite to the center of the screen
       graphics.x = app.screen.width / 4;
       graphics.y = app.screen.height / 4;
-      graphics.scale.set(3);
       ref.current?.appendChild(app.view);
     })();
   }, [onClick]);

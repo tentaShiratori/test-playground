@@ -14,8 +14,18 @@ const config = {
     "^lodash-es$": "lodash",
   },
   coverageProvider: "v8",
+  coveragePathIgnorePatterns: [
+    "<rootDir>/lib/\\$path.ts",
+    "<rootDir>/test",
+    "node_modules",
+  ],
+  // runner: "@kayahr/jest-electron-runner",
+  // testEnvironment: "@kayahr/jest-electron-runner/environment",
+  // testRunner: "@kayahr/jest-electron-runner",
+  // runner: "@pixi/jest-electron/runner",
+  // testEnvironment: "@pixi/jest-electron/environment",
   testEnvironment: "jsdom",
-  setupFiles: ["jest-webgl-canvas-mock"],
+  // setupFiles: ["jest-webgl-canvas-mock"],
   // Add more setup options before each test is run
   setupFilesAfterEnv: [
     "<rootDir>/jest.polyfills.js",

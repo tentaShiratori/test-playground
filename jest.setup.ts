@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
 import { server } from "./test/msw";
+import "./app/globals.css";
 
 beforeAll(() => {
   server.listen();

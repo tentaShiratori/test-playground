@@ -77,3 +77,11 @@ Object.defineProperties(HTMLMediaElement.prototype, {
     },
   },
 });
+
+window.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+
+window.PointerEvent = class PointerEvent extends MouseEvent {};

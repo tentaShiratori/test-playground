@@ -27,42 +27,41 @@ export const FilledForm: Story = {
     onClick: fn(),
   },
   play: async ({ canvasElement, args }) => {
-    const event = new PointerEvent("mousedown", {
-      altKey: false,
-      bubbles: true,
-      button: 0,
-      buttons: 1,
-      cancelable: true,
-      clientX: 141,
-      clientY: 130,
-      composed: true,
-      ctrlKey: false,
-      detail: 0,
-      height: 1,
-      isPrimary: true,
-      metaKey: false,
-      movementX: 0,
-      movementY: 0,
-      pointerId: 1,
-      pointerType: "mouse",
-      pressure: 0.5,
-      relatedTarget: null,
-      screenX: 441,
-      screenY: 291,
-      shiftKey: false,
-      tangentialPressure: 0,
-      tiltX: 0,
-      tiltY: 0,
-      twist: 0,
-      which: 1,
-      width: 1,
-    });
-    Object.assign(event, {});
-    within(canvasElement).getByTestId("pixi").dispatchEvent(event);
     await sleep(2000);
-
-    await waitFor(() => {
-      expect(args.onClick).toHaveBeenCalled();
-    });
+    within(canvasElement)
+      .getByTestId("pixi")
+      .dispatchEvent(
+        new PointerEvent("pointerdown", {
+          clientX: 10,
+          clientY: 10,
+        })
+      );
+    expect(args.onClick).not.toHaveBeenCalled();
+    within(canvasElement)
+      .getByTestId("pixi")
+      .dispatchEvent(
+        new PointerEvent("pointerdown", {
+          clientX: 65,
+          clientY: 65,
+        })
+      );
+    within(canvasElement)
+      .getByTestId("pixi")
+      .dispatchEvent(
+        new PointerEvent("pointerdown", {
+          clientX: 10,
+          clientY: 10,
+        })
+      );
+    expect(args.onClick).not.toHaveBeenCalled();
+    within(canvasElement)
+      .getByTestId("pixi")
+      .dispatchEvent(
+        new PointerEvent("pointerdown", {
+          clientX: 66,
+          clientY: 66,
+        })
+      );
+    expect(args.onClick).toHaveBeenCalled();
   },
 };
