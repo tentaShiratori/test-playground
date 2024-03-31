@@ -15,12 +15,13 @@ const HydrateAtoms: FC<PropsWithChildren<{ initialValues: InitialValues }>> = ({
 
 export function renderApp(
   ui: ReactNode,
-  options: RenderOptions & { initialValues?: InitialValues } = {},
+  options: RenderOptions & { initialValues?: InitialValues } = {}
 ) {
   const store = createStore();
   const Wrapper =
     options.wrapper ?? (({ children }: PropsWithChildren) => <>{children}</>);
   const result = baseRender(ui, {
+    container: document.body.appendChild(document.createElement("div")),
     ...options,
     wrapper: ({ children }) => (
       <JotaiProvider store={store}>

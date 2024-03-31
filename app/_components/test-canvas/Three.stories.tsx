@@ -22,7 +22,7 @@ function sleep(ms: number) {
  * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
  * to learn more about using the canvasElement to query the DOM
  */
-export const FilledForm: Story = {
+export const Primary: Story = {
   args: {
     onPointerEnter: fn(),
   },
@@ -32,14 +32,14 @@ export const FilledForm: Story = {
       new PointerEvent("pointermove", {
         clientX: 0,
         clientY: 0,
-      }),
+      })
     );
     expect(args.onPointerEnter).not.toHaveBeenCalled();
     window.dispatchEvent(
       new PointerEvent("pointermove", {
         clientX: window.innerWidth / 2,
         clientY: window.innerHeight / 2,
-      }),
+      })
     );
     await waitFor(() => expect(args.onPointerEnter).toHaveBeenCalled());
   },
