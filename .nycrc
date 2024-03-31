@@ -1,4 +1,4 @@
 {
   "reporter": ["text-summary", "lcov"],
-  "temp-dir": "./coverage"
+  "temp-dir": "./coverage/results"
 }
