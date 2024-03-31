@@ -2,9 +2,7 @@
 import { Slider } from "@/components/ui/slider";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { expect, fn, userEvent, within } from "@storybook/test";
-
-import { waitFor } from "@testing-library/dom";
+import { fn } from "@storybook/test";
 
 const meta: Meta<typeof Slider> = {
   component: Slider,

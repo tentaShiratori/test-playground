@@ -19,6 +19,8 @@ const config = {
     "<rootDir>/test",
     "node_modules",
   ],
+  coverageDirectory: "<rootDir>/coverage/results",
+  coverageReporters: ["json", "text-summary"],
   // runner: "@kayahr/jest-electron-runner",
   // testEnvironment: "@kayahr/jest-electron-runner/environment",
   // testRunner: "@kayahr/jest-electron-runner",

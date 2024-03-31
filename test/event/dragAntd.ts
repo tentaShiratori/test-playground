@@ -6,7 +6,7 @@ export default function dragAntd(
     delta,
   }: {
     delta: { x: number; y: number };
-  }
+  },
 ) {
   const mousedown = new MouseEvent("mousedown", {
     bubbles: true,

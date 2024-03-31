@@ -53,7 +53,7 @@ export default async function dragPointer(
     delta?: { x: number; y: number };
     steps?: number;
     duration?: number;
-  }
+  },
 ) {
   const from = getElementClientCenter(element);
   let to = { x: 0, y: 0 };

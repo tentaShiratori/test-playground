@@ -13,7 +13,7 @@ describe("Shadcn Slider", () => {
         max={1}
         step={0.1}
         style={{ width: "100px" }}
-      />
+      />,
     );
     const target = screen.getByLabelText("slider");
     Object.defineProperty(target, "getBoundingClientRect", {

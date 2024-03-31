@@ -9,7 +9,7 @@ describe("Pixi", () => {
       async () => {
         expect(container.querySelector("#pixi")).not.toBeNull();
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
     rerender(<Pixi onClick={handleClick} />);
     const pixi = container.querySelector("#pixi");

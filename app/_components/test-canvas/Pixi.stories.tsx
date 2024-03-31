@@ -1,9 +1,8 @@
 // Replace your-framework with the name of your framework
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { expect, fn, userEvent, within } from "@storybook/test";
+import { expect, fn, within } from "@storybook/test";
 
-import { waitFor } from "@testing-library/dom";
 import { Pixi } from "./Pixi";
 
 const meta: Meta<typeof Pixi> = {
@@ -34,7 +33,7 @@ export const FilledForm: Story = {
         new PointerEvent("pointerdown", {
           clientX: 10,
           clientY: 10,
-        })
+        }),
       );
     expect(args.onClick).not.toHaveBeenCalled();
     within(canvasElement)
@@ -43,7 +42,7 @@ export const FilledForm: Story = {
         new PointerEvent("pointerdown", {
           clientX: 65,
           clientY: 65,
-        })
+        }),
       );
     within(canvasElement)
       .getByTestId("pixi")
@@ -51,7 +50,7 @@ export const FilledForm: Story = {
         new PointerEvent("pointerdown", {
           clientX: 10,
           clientY: 10,
-        })
+        }),
       );
     expect(args.onClick).not.toHaveBeenCalled();
     within(canvasElement)
@@ -60,7 +59,7 @@ export const FilledForm: Story = {
         new PointerEvent("pointerdown", {
           clientX: 66,
           clientY: 66,
-        })
+        }),
       );
     expect(args.onClick).toHaveBeenCalled();
   },

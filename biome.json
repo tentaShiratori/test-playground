@@ -13,6 +13,6 @@
     "indentStyle": "space"
   },
   "files": {
-    "ignore": [".next"]
+    "ignore": [".next", "coverage"]
   }
 }

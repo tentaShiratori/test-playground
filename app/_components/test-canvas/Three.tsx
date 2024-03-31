@@ -11,7 +11,7 @@ export const Three: FC<{ onPointerEnter: () => void }> = ({
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      1000,
     );
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2(-1, -1);
@@ -57,7 +57,7 @@ export const Three: FC<{ onPointerEnter: () => void }> = ({
     }
     window.addEventListener("pointermove", onPointerMove);
     return () => window.removeEventListener("pointermove", onPointerMove);
-  }, []);
+  }, [onPointerEnter]);
 
   return <div ref={ref} />;
 };

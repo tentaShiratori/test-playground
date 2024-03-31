@@ -1,7 +1,7 @@
 // Replace your-framework with the name of your framework
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { expect, fn, userEvent, within } from "@storybook/test";
+import { expect, fn } from "@storybook/test";
 
 import { waitFor } from "@testing-library/dom";
 import { Three } from "./Three";
@@ -32,14 +32,14 @@ export const FilledForm: Story = {
       new PointerEvent("pointermove", {
         clientX: 0,
         clientY: 0,
-      })
+      }),
     );
     expect(args.onPointerEnter).not.toHaveBeenCalled();
     window.dispatchEvent(
       new PointerEvent("pointermove", {
         clientX: window.innerWidth / 2,
         clientY: window.innerHeight / 2,
-      })
+      }),
     );
     await waitFor(() => expect(args.onPointerEnter).toHaveBeenCalled());
   },

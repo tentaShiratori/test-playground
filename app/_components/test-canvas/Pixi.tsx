@@ -1,4 +1,4 @@
-import { Application, Assets, Sprite, Graphics } from "pixi.js";
+import { Application, Assets, Graphics, Sprite } from "pixi.js";
 import { FC, useEffect, useRef } from "react";
 
 export const Pixi: FC<{ onClick: () => void }> = ({ onClick }) => {

@@ -28,7 +28,7 @@ it.prop([fc.gen(), fc.integer({ min: 1, max: 2 ** 3 - 1 })])(
     ][c % 2]();
     await clickButtonA(result);
     expect(result.getByText("エラーがあります")).toBeInTheDocument();
-  }
+  },
 );
 
 it.prop([fc.gen()], { seed: 290279610, path: "0", endOnFailure: true })(
@@ -41,7 +41,7 @@ it.prop([fc.gen()], { seed: 290279610, path: "0", endOnFailure: true })(
     await inputPasswordConfirm(result, gen, password);
     await clickButtonA(result);
     expect(within(result.container).getByTestId("error")).toBeEmptyDOMElement();
-  }
+  },
 );
 
 const renderFC = (ui: ReactNode, options: RenderOptions = {}) => {
@@ -58,9 +58,9 @@ const filteredStrings = (min: number, max: number, filter: RegExp) => {
     .array(
       char(
         33, //'!'
-        126 //'~'
+        126, //'~'
       ).filter((c) => filter.test(c)),
-      { minLength: min, maxLength: max }
+      { minLength: min, maxLength: max },
     )
     .map((arr) => arr.join(""));
 };
@@ -75,29 +75,29 @@ const properString = (min: number, max: number) => {
 async function inputName(result: RenderResult, gen: fc.GeneratorValue) {
   await userEvent.type(
     result.getByRole("textbox", { name: "Name" }),
-    gen(filteredStrings, 1, 100, /^[a-zA-Z\d]/)
+    gen(filteredStrings, 1, 100, /^[a-zA-Z\d]/),
   );
 }
 
 async function inputPassword(
   result: RenderResult,
   gen: fc.GeneratorValue,
-  password?: string
+  password?: string,
 ) {
   await userEvent.type(
     result.getByLabelText("Password"),
-    password ?? gen(properString, 8, 20)
+    password ?? gen(properString, 8, 20),
   );
 }
 
 async function inputPasswordConfirm(
   result: RenderResult,
   gen: fc.GeneratorValue,
-  password?: string
+  password?: string,
 ) {
   await userEvent.type(
     result.getByLabelText("Password Confirmation"),
-    password ?? gen(properString, 8, 20)
+    password ?? gen(properString, 8, 20),
   );
 }
 

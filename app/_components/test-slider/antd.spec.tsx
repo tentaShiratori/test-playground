@@ -1,6 +1,6 @@
-import { Slider } from "antd";
-import { render, screen } from "@testing-library/react";
 import dragAntd from "@/test/event/dragAntd";
+import { render, screen } from "@testing-library/react";
+import { Slider } from "antd";
 
 describe("Antd Slider", () => {
   it("should render correctly", async () => {
@@ -13,7 +13,7 @@ describe("Antd Slider", () => {
         step={0.1}
         value={0}
         aria-label="slider"
-      />
+      />,
     );
     const target = container.querySelector(".ant-slider");
     Object.defineProperty(target, "getBoundingClientRect", {
