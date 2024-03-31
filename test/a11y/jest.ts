@@ -1,6 +1,6 @@
+import { axe } from "jest-axe";
 import { ReactElement } from "react";
 import { renderApp } from "../renderApp";
-import { axe } from "jest-axe";
 
 export async function expectAccessible(
   ...[ui, options]: Parameters<typeof renderApp>

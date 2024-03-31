@@ -1,6 +1,6 @@
 import { Slider } from "@/components/ui/slider";
-import dragPointer from "@/test/event/dragPointer";
 import { expectAccessible } from "@/test/a11y/jest";
+import dragPointer from "@/test/event/dragPointer";
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 
@@ -15,7 +15,7 @@ describe("Shadcn Slider", () => {
         max={1}
         step={0.1}
         style={{ width: "100px" }}
-      />
+      />,
     );
     const target = screen.getByLabelText("slider");
     Object.defineProperty(target, "getBoundingClientRect", {
@@ -32,7 +32,7 @@ describe("Shadcn Slider", () => {
 
   it("check accessibility", async () => {
     expectAccessible(
-      <Slider min={0} max={1} step={0.1} style={{ width: "100px" }} />
+      <Slider min={0} max={1} step={0.1} style={{ width: "100px" }} />,
     );
   });
 });
