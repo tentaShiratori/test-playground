@@ -15,7 +15,7 @@ const HydrateAtoms: FC<PropsWithChildren<{ initialValues: InitialValues }>> = ({
 
 export function renderApp(
   ui: ReactNode,
-  options: RenderOptions & { initialValues?: InitialValues } = {}
+  options: RenderOptions & { initialValues?: InitialValues } = {},
 ) {
   const store = createStore();
   const Wrapper =

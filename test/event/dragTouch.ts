@@ -76,7 +76,6 @@ export default async function dragTouch(
     clientY: from.y,
   };
 
-  let pointerId: number;
   Object.defineProperties(element, {
     hasPointerCapture: {
       value: jest.fn().mockReturnValue(true),

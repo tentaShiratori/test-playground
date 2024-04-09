@@ -32,14 +32,14 @@ export const Primary: Story = {
       new PointerEvent("pointermove", {
         clientX: 0,
         clientY: 0,
-      })
+      }),
     );
     expect(args.onPointerEnter).not.toHaveBeenCalled();
     window.dispatchEvent(
       new PointerEvent("pointermove", {
         clientX: window.innerWidth / 2,
         clientY: window.innerHeight / 2,
-      })
+      }),
     );
     await waitFor(() => expect(args.onPointerEnter).toHaveBeenCalled());
   },

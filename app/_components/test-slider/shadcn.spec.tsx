@@ -18,6 +18,7 @@ describe("Shadcn Slider", () => {
       />,
     );
     const target = screen.getByLabelText("slider");
+
     Object.defineProperty(target, "getBoundingClientRect", {
       value: jest
         .fn()
