@@ -12,13 +12,7 @@ import { TextDecoder, TextEncoder } from "node:util";
 
 import { Blob, File } from "node:buffer";
 import { fireEvent } from "@testing-library/dom";
-import fetch, {
-  FormData,
-  Headers,
-  Request,
-  Response,
-} from "node-fetch-commonjs";
-
+import fetch, { Headers, Request, Response } from "node-fetch-commonjs";
 Object.defineProperties(window, {
   TextDecoder: { value: TextDecoder },
   TextEncoder: { value: TextEncoder },
@@ -29,7 +23,6 @@ Object.defineProperties(window, {
   Blob: { value: Blob },
   File: { value: File },
   Headers: { value: Headers },
-  FormData: { value: FormData },
   Request: { value: Request },
   Response: { value: Response },
 });

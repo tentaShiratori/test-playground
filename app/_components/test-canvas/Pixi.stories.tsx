@@ -33,7 +33,7 @@ export const Primary: Story = {
         new PointerEvent("pointerdown", {
           clientX: 10,
           clientY: 10,
-        }),
+        })
       );
     expect(args.onClick).not.toHaveBeenCalled();
     within(canvasElement)
@@ -42,7 +42,7 @@ export const Primary: Story = {
         new PointerEvent("pointerdown", {
           clientX: 65,
           clientY: 65,
-        }),
+        })
       );
     within(canvasElement)
       .getByTestId("pixi")
@@ -50,7 +50,7 @@ export const Primary: Story = {
         new PointerEvent("pointerdown", {
           clientX: 10,
           clientY: 10,
-        }),
+        })
       );
     expect(args.onClick).not.toHaveBeenCalled();
     within(canvasElement)
@@ -59,8 +59,9 @@ export const Primary: Story = {
         new PointerEvent("pointerdown", {
           clientX: 66,
           clientY: 66,
-        }),
+        })
       );
     expect(args.onClick).toHaveBeenCalled();
   },
 };
+Primary.storyName = "クリックできる？";

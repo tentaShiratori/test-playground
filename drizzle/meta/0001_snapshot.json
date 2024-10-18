@@ -1,0 +1,51 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "5995d27c-c4b1-474b-9a61-be41b34185d2",
+  "prevId": "c25e4024-3c8a-424d-8072-84ac50fea224",
+  "tables": {
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"users\".\"first_name\"": "\"users\".\"name\""
+    }
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
