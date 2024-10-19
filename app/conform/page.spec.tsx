@@ -43,9 +43,8 @@ describe("UserForm", () => {
       expect(createUser).toHaveBeenCalledWith(expect.any(FormData));
     });
     // 値の確認もできた
-    // const formData = (createUser as jest.Mock).mock.calls[0][0];
-    // for (const pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
+    const formData = (createUser as jest.Mock).mock.calls[0][0] as FormData;
+    expect(formData.get("name")).toBe("Test User");
+    expect(formData.get("email")).toBe("test@example.com");
   });
 });

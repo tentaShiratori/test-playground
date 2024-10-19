@@ -1,0 +1,15 @@
+ignores: [
+  # Ignore all @storybook/* packages
+  "@storybook/*",
+  "@chromatic-com/storybook",
+  # tailwindcss
+  "autoprefixer",
+  "postcss",
+  # test
+
+  # commands
+  "rimraf",
+  "canvas",
+  "babel-plugin-istanbul",
+  "jest-environment-jsdom",
+]

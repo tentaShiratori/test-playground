@@ -8,7 +8,6 @@
     - 10/10時点ではまだplaywrightはexperimentalだし7月から動いてなさそう
 4. server actions系はどっち？
     - conformもplaywrightでテストしてる(それ用のアプリケーションを作って...)
-    - 結論的にはreactをcanaryにするか、playwrightを使うかになる
     - 確かめてみる
         - 雑に実験
             - Not implemented: HTMLFormElement.prototype.requestSubmitをどう倒せばいいかわからない
@@ -22,3 +21,14 @@
         - canaryにしないで攻略する方法は？
             - HTMLFormElementを独自実装するくらいしかない
                 - やりたくない
+    - 結論
+        - reactをcanaryにするか、playwrightを使うかになる
+
+## pakcage.json
+1. test
+    - jest, e2e はそのまま実行できる
+    - storybook は storybook を立ててから実行
+2. coverage
+    - jest は普通にやるだけ
+    - e2e は dev server が立ってると失敗することに注意
+    - storybook は storybook を立ててから実行
